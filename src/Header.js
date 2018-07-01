@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './images/currency_exchange_logo.png'
+import logo from './images/exchange.svg'
 
 
 const header = () => {

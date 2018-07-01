@@ -6,13 +6,31 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      input: '',
-      select: '',
+      currency: [],
+      currencyFrom: 0,
+      currencyTo: 0,
+
     }
+  }
+
+  componentDidMount() {
+    fetch('https://free.currencyconverterapi.com/api/v5/countries')
+    .then(response => response.json())
+    .then( data => this.setState({ currency: data.results }));
+
+    console.log(this.state.currency)
   }
 
   onSelectChange = (event) => {
     console.log(event.target.value);
+  }
+
+  exchange(amount, currencyFrom, currencyTo) {
+
+    fetch('https://free.currencyconverterapi.com/api/v5/countries')
+    .then(response => response.json())
+    .then( data => this.setState({ currency: data.results }));
+
   }
 
   onInputChange = (event) => {
@@ -21,7 +39,7 @@ class App extends Component {
 
   render() {
     return (
-        <ConvertCurrentForm onSelectChange = {this.onSelectChange} onInputChange = {this.onInputChange} />
+        <ConvertCurrentForm currencies={this.state.currency} onSelectChange = {this.onSelectChange} onInputChange = {this.onInputChange                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  } />
     );
   }
 }
